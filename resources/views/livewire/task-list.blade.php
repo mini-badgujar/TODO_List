@@ -37,7 +37,7 @@
                 </div> --}}
                 <div class="relative">
                     <form wire:submit.prevent="add">
-                        <input type="text"
+                        <input type="text" name="name"
                             class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-l-gray-100 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                             placeholder="Enter task name here..." wire:model="name">
                         <button type="submit"
@@ -132,6 +132,18 @@
                                     <div class="line-through text-slate-400">{{ $task->name }}</div>
                                 @else
                                     <div>{{ $task->name }}</div>
+                                @endif
+                            </td>
+                            <td scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                @if ($task->status)
+                                    <div class="py-0.1 bg-green-100 rounded-md text-center text-slate-500">
+                                        Done and deleted
+                                    </div>
+                                @else
+                                    <div class=" py-0.1 px-0.5 bg-yellow-100 rounded-md text-center text-slate-500">
+                                        Pending but deleted
+                                    </div>
                                 @endif
                             </td>
                             <td class="px-6 py-4">

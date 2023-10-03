@@ -22,17 +22,19 @@ class TaskList extends Component
         ]);
         Task::create([
             'name' => $this->name,
-            'status' => false
         ]);
         session()->flash('message', 'Task added successfully');
+        $this->name = null;
     }
     public function delete($id)
     {
         Task::where('id', $id)->delete();
+        session()->flash('message', 'Task deleted successfully');
     }
     public function restore($id)
     {
         Task::where('id', $id)->restore();
+        session()->flash('message', 'Task has been restored');
     }
     public function render()
     {
