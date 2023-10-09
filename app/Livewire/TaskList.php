@@ -15,11 +15,6 @@ class TaskList extends Component
         'name' => 'required'
     ];
 
-    public function mount()
-    {
-        $this->tasks = Task::withTrashed()->latest()->get();
-    }
-
     /**
      * function to toggle the status of the task to done or pending
      ** @param $id is id of task  */
@@ -68,6 +63,7 @@ class TaskList extends Component
 
     public function render()
     {
+        $this->tasks = Task::withTrashed()->latest()->get();
         return view('livewire.task-list');
     }
 }
